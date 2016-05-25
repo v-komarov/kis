@@ -1,0 +1,24 @@
+{% include "header.html" %}
+
+    <form action="/storetmcchoice" method="get" class="f-horizontal">{% csrf_token %}
+    <div class="f-row">
+	<fieldset>
+	    <legend>
+		cdlfdlkdlgkdlk
+	    </legend>
+	    {{ form.spec_id }}
+	    <div class="f-row">
+		<label>{{ form.one.label }}</label>
+		<div class="f-input">{{ form.one }}</div>
+	    </div><!-- f-row -->
+	    <div class="f-row">
+		<label>{{ form.q.label }}</label>
+		<div class="f-input">{{ form.q }}</div>
+	    </div><!-- f-row -->
+	</fieldset>
+	<div class="f-actions"><button type="submit" class="f-bu">Применить</button></div>
+    </div><!-- f-row -->
+    </form>
+
+{% include "footer.html" %}
+

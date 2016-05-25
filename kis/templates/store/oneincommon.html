@@ -1,0 +1,41 @@
+
+{% include "menu.html" %}
+
+<div class="g">
+
+<h3>Склад</h3>
+
+<ul class="f-nav f-nav-tabs">
+	<li class="active"><a href="/store">Номенклатура</a></li>
+	<li><a href="/storelist">Склады</a></li>
+	<li><a href="/storeperson">Кладовщики</a></li>
+	<li><a href="/storetmc">Заявки ТМЦ</a></li>
+	<li><a href="/storereports">Отчеты</a></li>
+</ul><!-- f-nav f-nav-tabs -->
+
+
+<h3>Номенклатура</h3>
+<div class="g">
+<div class="g-row">
+
+<div class="g-6">
+<b>Код ИЕСУП:</b> {{ one.0 }}<br>
+<b>Наименование:</b> {{ one.1 }}<br>
+<b>Вид номенклатуры:</b> {{ one.5 }}<br>
+<b>Модель данных:</b> {{ one.7 }}<br>
+</div><!-- g-6 -->
+
+<div class="g-6">
+
+{% if type_one == '0' %}
+    <h2>Новое поступление</h2>
+{% else %}
+    <h2>Ввод остатка</h2>    
+{% endif %}
+
+
+</div><!-- g-6 -->
+</div><!-- g-row -->
+</div><!-- g -->
+
+

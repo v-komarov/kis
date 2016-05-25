@@ -1,0 +1,52 @@
+{% include "header.html" %}
+
+
+{% include "store/oneh.html" %}
+
+
+
+<ul class="f-nav f-nav-tabs">
+	<li><a href="/storeone">Поступления</a></li>
+	<li><a href="/storerest">Остатки</a></li>
+	<li class="active"><a href="/storereserve">Резервы</a></li>
+	<li><a href="/storeoneout">Реализация</a></li>
+	<li><a href="#">Перемещения</a></li>
+	<li><a href="/storeprocess">Движение</a></li>
+</ul><!-- f-nav f-nav-tabs -->
+
+
+<table>
+    <caption></caption>
+    <thead>
+	<tr>
+	    <th></th>
+	    <th>Дата</th>
+	    <th>Склад</th>
+	    <th>Ед.из.</th>
+	    <th>Резерв</th>
+	    <th>Заявка ТМЦ</th>
+	    <th>Пользователь</th>
+	    <th>Отменить</th>
+	</tr>
+    </thead>
+    <tbody>
+	{% for row in data %}
+	<tr>
+	    <td><a href="/storeoneoutnew/?reserve_id={{ row.0 }}"><i class="fa fa-gift"></i></a></td>
+	    <td>{{ row.1|date:"d.m.Y" }}</td>
+	    <td>{{ row.3 }}</td>
+	    <td>{{ row.5 }}</td>
+	    <td>{{ row.6}}</td>
+	    <td>{{ row.7 }}</td>
+	    <td>{{ row.9 }} {{ row.8 }}</td>
+	    <td><a href="/storereserve/?delete_reserve={{ row.0 }}"><i class="fa fa-trash-o">&nbsp;&nbsp;&nbsp;</i><mark>X</mark></a></td>
+	</tr>
+	{% endfor%}
+    </tbody>
+</table>
+
+
+</div><!-- g-row -->
+</div><!-- g -->
+
+{% include "footer.html" %}

@@ -1,0 +1,59 @@
+{% include "header.html" %}
+
+<div class="g">
+<div class="g-row">
+
+{% include "menu.html" %}
+
+
+<h3>Склад</h3>
+
+<ul class="f-nav f-nav-tabs">
+	<li><a href="/store">Номенклатура</a></li>
+	<li><a href="/storelist">Склады</a></li>
+	<li class="active"><a href="/storeperson">Кладовщики</a></li>
+	<li><a href="/storetmc">Заявки ТМЦ</a></li>
+	<li><a href="/storereports">Отчеты</a></li>
+</ul><!-- f-nav f-nav-tabs -->
+
+
+<h3>Кладовщики</h3>
+
+<p>
+<a href="/storepersonnew"><i class="fa fa-file-o"></i>&nbsp;&nbsp;<mark>Создать<mark></a>
+</p>
+
+
+<table>
+    <caption></caption>
+    <thead>
+	<tr>
+	    <th>Ф.И.О.</th>
+	    <th>Телефон</th>
+	    <th>Склад</th>
+	    <th>Создан</th>
+	    <th>Создал</th>
+	    <th>Удалить</th>
+	</tr>
+    </thead>
+    <tbody>
+	{% for row in data %}
+	<tr>
+	    <td>{{ row.4 }} {{ row.5 }} {{ row.6 }}</td>
+	    <td>{{ row.7 }}</td>
+	    <td>{{ row.2 }}</td>
+	    <td>{{ row.9 }}</td>
+	    <td>{{ row.11 }} {{ row.10 }}</td>
+	    <td><a href="/storeperson/?delete_id={{ row.0 }}"><i class="fa fa-trash-o"></i>&nbsp;&nbsp;<mark>X</mark></a></td>
+	</tr>
+	{% endfor%}
+    </tbody>
+</table>
+
+
+
+
+</div><!-- g-row -->
+</div><!-- g -->
+
+{% include "footer.html" %}

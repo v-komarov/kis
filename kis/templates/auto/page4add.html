@@ -1,0 +1,91 @@
+{% include "header.html" %}
+
+<div class="g">
+<div class="g-row">
+
+{% include "menu.html" %}
+
+
+<h3>Автотранспорт</h3>
+
+<ul class="f-nav f-nav-tabs">
+    <li><a href="/page2auto">Новый заказ</a></li>
+    <li><a href="/auto">Заказы</a></li>
+    <li><a href="/page3auto">Выезды по заказам</a></li>
+    <li class="active"><a href="/page4auto">Плановые выезды</a></li>
+    <li><a href="/page5auto">Автомобили</a></li>
+    <li><a href="/page6auto">Водители</a></li>
+    <li><a href="/page9auto">Личные автомобили</a></li>
+    <li><a href="/page7auto">Настройки</a></li>
+    <li><a href="/page8auto">Отчеты</a></li>
+    <li><a href="/page10auto">Инструкции</a></li>
+</ul><!-- f-nav f-nav-tabs -->
+
+
+
+</div><!-- g-row -->
+
+
+
+<h3>Новый плановый выезд</h3>
+
+
+
+<div class="g-row">
+<center>
+    <form action="" method="post" class="forms">{% csrf_token %}
+	<legend>Содержание</legend>
+	<fieldset>
+	    <div class="f-row">
+		<label>{{ form.start_date.label }}</label>
+		<div class="f-input">{{ form.start_date }} {{ form.start_time }}</div>
+	    </div><!-- f-row -->
+	    <div class="f-row">
+		<label>{{ form.end_date.label }}</label>
+		<div class="f-input">{{ form.end_date }} {{ form.end_time }}</div>
+	    </div><!-- f-row -->
+	    <div class="f-row">
+		<label>{{ form.route.label }}</label>
+		<div class="f-input">{{ form.route }}</div>
+	    </div><!-- f-row -->
+	    <div class="f-row">
+		<label>{{ form.place.label }}</label>
+		<div class="f-input">{{ form.place }}</div>
+	    </div><!-- f-row -->
+	    <div class="f-row">
+		<label>{{ form.driver.label }}</label>
+		<div class="f-input">{{ form.driver }}</div>
+	    </div><!-- f-row -->
+	    <div class="f-row">
+		<label>{{ form.auto.label }}</label>
+		<div class="f-input">{{ form.auto }}</div>
+	    </div><!-- f-row -->
+	    <div class="f-row">
+		<label>{{ form.target.label }}</label>
+		<div class="f-input">{{ form.target }}</div>
+	    </div><!-- f-row -->
+	    <div class="f-row">
+		<label>{{ form.traveler.label }}</label>
+		<div class="f-input">{{ form.traveler }}</div>
+	    </div><!-- f-row -->
+	    <div class="f-row">
+		<label>{{ form.trailer.label }}</label>
+		<div class="f-input">{{ form.trailer }}</div>
+	    </div><!-- f-row -->
+	    <div class="f-row">
+		<label>{{ form.chief.label }}</label>
+		<div class="f-input">{{ form.chief }}</div>
+	    </div><!-- f-row -->
+	</fieldset>
+	<div class="f-actions"><button type="submit" class="f-bu">Создать</button></div>
+    </form>
+
+</center>
+
+
+
+
+</div><!-- g-row -->
+</div><!-- g -->
+
+{% include "footer.html" %}

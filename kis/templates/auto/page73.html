@@ -1,0 +1,113 @@
+{% include "header.html" %}
+
+<div class="g">
+<div class="g-row">
+
+{% include "menu.html" %}
+
+
+<h3>Автотранспорт</h3>
+
+<ul class="f-nav f-nav-tabs">
+    <li><a href="/page2auto">Новый заказ</a></li>
+    <li><a href="/auto">Заказы</a></li>
+    <li><a href="/page3auto">Выезды по заказам</a></li>
+    <li><a href="/page4auto">Плановые выезды</a></li>
+    <li><a href="/page5auto">Автомобили</a></li>
+    <li><a href="/page6auto">Водители</a></li>
+    <li><a href="/page9auto">Личные автомобили</a></li>
+    <li class="active"><a href="/page7auto">Настройки</a></li>
+    <li><a href="/page8auto">Отчеты</a></li>
+    <li><a href="/page10auto">Инструкции</a></li>
+</ul><!-- f-nav f-nav-tabs -->
+
+
+
+
+<h3>Настройки</h3>
+
+
+<ul class="f-nav f-nav-tabs">
+    <li><a href="/page7auto">Административная Email группа</a></li>
+    <li><a href="/page7auto2">Обратный Email адрес</a></li>
+    <li class="active"><a href="/page7auto3">Лето/Зима</a></li>
+</ul><!-- f-nav f-nav-tabs -->
+
+
+<h3>Лето/Зима</h3>
+
+
+<div class="f-col-2">
+    <div class="f-column">
+	<h4>Лето (начало сезона)</h4>
+
+
+<ul>
+
+    {% for item in data_s %}
+	<li>{{ item.1 }} <a href="/page7auto3/?delete_id={{ item.0 }}"><mark>X</mark></a></li>
+    {% endfor %}
+
+</ul>
+
+
+<center>
+    <form action="" method="post" class="forms">{% csrf_token %}
+	<fieldset>
+	    <legend>
+	    </legend>
+	    <div class="f-row">
+		<label>{{ s.start_date_s.label }}</label>
+		<div class="f-input">{{ s.start_date_s }}</div>
+	    </div><!-- f-row -->
+	</fieldset>
+	<div class="f-actions"><button type="submit" class="f-bu">Добавить</button></div>
+    </form>
+
+</center>
+
+
+
+
+
+    </div><!-- f-column -->
+    <div class="f-column">
+	<h4>Зима (начало сезона)</h4>
+
+
+<ul>
+
+    {% for item in data_w %}
+	<li>{{ item.1 }} <a href="/page7auto3/?delete_id={{ item.0 }}"><mark>X</mark></a></li>
+    {% endfor %}
+
+</ul>
+
+
+<center>
+    <form action="" method="post" class="forms">{% csrf_token %}
+	<fieldset>
+	    <legend>
+	    </legend>
+	    <div class="f-row">
+		<label>{{ w.start_date_w.label }}</label>
+		<div class="f-input">{{ w.start_date_w }}</div>
+	    </div><!-- f-row -->
+	</fieldset>
+	<div class="f-actions"><button type="submit" class="f-bu">Добавить</button></div>
+    </form>
+
+</center>
+
+
+
+
+
+    </div><!-- f-column -->
+</div><!-- f-col-2 -->
+
+
+</div><!-- g-row -->
+</div><!-- g -->
+
+{% include "footer.html" %}

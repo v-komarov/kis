@@ -1,0 +1,66 @@
+{% include "header.html" %}
+
+<div class="g">
+<div class="g-row">
+
+{% include "menu.html" %}
+
+
+<h3>Автотранспорт</h3>
+
+<ul class="f-nav f-nav-tabs">
+    <li><a href="/page2auto">Новый заказ</a></li>
+    <li><a href="/auto">Заказы</a></li>
+    <li><a href="/page3auto">Выезды по заказам</a></li>
+    <li><a href="/page4auto">Плановые выезды</a></li>
+    <li class="active"><a href="/page5auto">Автомобили</a></li>
+    <li><a href="/page6auto">Водители</a></li>
+    <li><a href="/page9auto">Личные автомобили</a></li>
+    <li><a href="/page7auto">Настройки</a></li>
+    <li><a href="/page8auto">Отчеты</a></li>
+    <li><a href="/page10auto">Инструкции</a></li>
+</ul><!-- f-nav f-nav-tabs -->
+
+
+
+</div><!-- g-row -->
+
+
+<ul class="f-nav f-nav-tabs">
+	<li><a href="/page5autoedit">Автомобиль</a></li>
+	<li class="active"><a href="/page5autoeditstatus">Статус</a></li>
+	<li><a href="/page5autoedittrailer">Прицеп</a></li>
+</ul><!-- f-nav f-nav-tabs -->
+
+
+<h3>Текущий статус : {{ d.17 }}</h3>
+
+<table>
+    <tr>
+	<th>Дата</th>
+	<th>Установленный статус</th>
+	<th>Статус установил</th>
+	<th>Телефон</th>
+    </tr>
+    {% for item in data %}
+    <tr>
+	<td>{{ item.2 }}</td>
+	<td>{{ item.1 }}</td>
+	<td>{{ item.4 }} {{ item.3 }}</td>
+	<td>{{ item.6 }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+</div><!-- g-row -->
+</div><!-- g -->
+
+
+
+{% include "footer.html" %}
+
+
+
+
+

@@ -1,0 +1,77 @@
+{% include "header.html" %}
+
+<div class="g">
+<div class="g-row">
+
+{% include "menu.html" %}
+
+
+<h3>ItHelpDesk</h3>
+
+<ul class="f-nav f-nav-tabs">
+    <li><a href="/itmy">Мои заявки</a></li>
+    <li><a href="/ittask">Обработка заявок</a></li>
+    <li class="active"><a href="/itreport">Отчеты</a></li>
+    <li><a href="/itopt">Настройки</a></li>
+</ul><!-- f-nav f-nav-tabs -->
+
+
+<h3>Отчеты</h3>
+
+
+<center>
+    <form action="" method="post" class="forms">{% csrf_token %}
+	<fieldset>
+	    <legend>
+	    </legend>
+	    <div class="f-row">
+		<label>{{ form.start_date.label }}</label>
+		<div class="f-input">{{ form.start_date }}</div>
+	    </div><!-- f-row -->
+	    <div class="f-row">
+		<label>{{ form.end_date.label }}</label>
+		<div class="f-input">{{ form.end_date }}</div>
+	    </div><!-- f-row -->
+	</fieldset>
+	<div class="f-actions"><button type="submit" class="f-bu">Формировать</button></div>
+    </form>
+
+</center>
+
+
+
+<table>
+    <caption></caption>
+    <thead>
+	<tr>
+	    <th>Исполнитель</th>
+	    <th>Телефон</th>
+	    <th>Всего<br>заявок</th>
+	    <th>Всего<br>трудоемкость<br>(чел./ч.)</th>
+	    <th>Выполнено<br>заявок</th>
+	    <th>Трудоемкость<br>(чел./ч.)<br>выполненых</th>
+	    <th>% выполнения</th>
+	</tr>
+    </thead>
+    <tbody>
+	{% for row in data %}
+	<tr>
+	    <td>{{ row.0 }}</td>
+	    <td>{{ row.1 }}</td>
+	    <td>{{ row.2 }}</td>
+	    <td>{{ row.3 }}</td>
+	    <td>{{ row.4 }}</td>
+	    <td>{{ row.5 }}</td>
+	    <td>{{ row.6 }}</td>
+	</tr>
+	{% endfor %}
+    </tbody>
+</table>
+
+
+    <a href="/itreport?report-excel=ok">Отчет в excel</a><br><br>
+
+
+</div><!-- g-row -->
+</div><!-- g -->
+

@@ -1,0 +1,77 @@
+{% include "header.html" %}
+
+<div class="g">
+<div class="g-row">
+
+{% include "menu.html" %}
+
+
+<h3>Автотранспорт</h3>
+
+<ul class="f-nav f-nav-tabs">
+    <li><a href="/page2auto">Новый заказ</a></li>
+    <li><a href="/auto">Заказы</a></li>
+    <li class="active"><a href="/page3auto">Выезды по заказам</a></li>
+    <li><a href="/page4auto">Плановые выезды</a></li>
+    <li><a href="/page5auto">Автомобили</a></li>
+    <li><a href="/page6auto">Водители</a></li>
+    <li><a href="/page9auto">Личные автомобили</a></li>
+    <li><a href="/page7auto">Настройки</a></li>
+    <li><a href="/page8auto">Отчеты</a></li>
+    <li><a href="/page10auto">Инструкции</a></li>
+</ul><!-- f-nav f-nav-tabs -->
+
+
+
+</div><!-- g-row -->
+
+
+
+<h3>Выезд {{ d.0 }}<br>
+Дата: {{ d.3 }} Время: {{ d.4 }}<br>
+Маршрут: {{ d.7 }}<br>
+Статус: {{ d.16 }}
+</h3>
+
+
+<ul class="f-nav f-nav-tabs">
+    <li><a href="/page3autoedit">Выезд</a></li>
+    <li class="active"><a href="/page3auto2">История статусов</a></li>
+    <li><a href="/page3auto4">История уведомлений</a></li>
+</ul><!-- f-nav f-nav-tabs -->
+
+
+<h3>История статусов</h3>
+
+
+<div class="g-row">
+
+<table>
+    <tr>
+	<th>Дата</th>
+	<th>Время</th>
+	<th>Статус</th>
+	<th>Комментарий</th>
+	<th>Установил</th>
+	<th>Телефон</th>
+    </tr>
+
+    {% for row in data %}
+	<tr>
+	    <td>{{ row.3 }}</td>
+	    <td>{{ row.4 }}</td>
+	    <td>{{ row.1 }}</td>
+	    <td>{{ row.2 }}</td>
+	    <td>{{ row.6 }} {{ row.5 }}</td>
+	    <td>{{ row.8 }}</td>
+	</tr>
+    {% endfor %}
+
+</table>
+
+
+
+</div><!-- g-row -->
+</div><!-- g -->
+
+{% include "footer.html" %}

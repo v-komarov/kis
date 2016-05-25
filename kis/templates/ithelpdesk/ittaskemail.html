@@ -1,0 +1,64 @@
+{% include "header.html" %}
+
+<div class="g">
+<div class="g-row">
+
+{% include "menu.html" %}
+
+
+<h3>ItHelpDesk</h3>
+
+<ul class="f-nav f-nav-tabs">
+    <li><a href="/itmy">Мои заявки</a></li>
+    <li class="active"><a href="/ittask">Обработка заявок</a></li>
+    <li><a href="/itreport">Отчеты</a></li>
+    <li><a href="/itopt">Настройки</a></li>
+</ul><!-- f-nav f-nav-tabs -->
+
+
+<h3>Заявка {{ d.1 }}</h3><a href="/ittaskclone"><mark>Клонировать<mark></a>
+
+
+<h4 style="color: {{ d.23 }};">
+Дата: {{ d.3 }} Время: {{ d.4 }}<br>
+Текст: {{ d.17 }}<br>
+Статус: {{ d.14 }}<br>
+Исполнитель: {{ d.9 }} {{ d.8 }}<br>
+Пользователь: {{ d.18 }} ({{ d.19 }})<br>
+</h4>
+
+<ul class="f-nav f-nav-tabs">
+    <li><a href="/ittaskedit">Заявка</a></li>
+    <li><a href="/itstatus">История статусов</a></li>
+    <li><a href="/itmesuser">Сообщения пользователя</a></li>
+    <li class="active"><a href="/itemail">История Email уведомлений</a></li>
+</ul><!-- f-nav f-nav-tabs -->
+
+<h3>История Email уведомлений</h3>
+
+
+
+<table>
+    <tr>
+	<th>Дата</th>
+	<th>Время</th>
+	<th>Email адрес</th>
+	<th>Содержание сообщения</th>
+    </tr>
+
+    {% for row in data %}
+	<tr>
+	    <td>{{ row.2 }}</td>
+	    <td>{{ row.3 }}</td>
+	    <td>{{ row.4 }}</td>
+	    <td>{{ row.1 }}</td>
+	</tr>
+    {% endfor %}
+
+</table>
+
+
+
+
+</div><!-- g-row -->
+</div><!-- g -->

@@ -1,0 +1,113 @@
+{% include "header.html" %}
+
+<div class="g">
+<div class="g-row">
+
+{% include "menu.html" %}
+
+
+<h3>ItHelpDesk</h3>
+
+<ul class="f-nav f-nav-tabs">
+    <li><a href="/itmy">Мои заявки</a></li>
+    <li class="active"><a href="/ittask">Обработка заявок</a></li>
+    <li><a href="/itreport">Отчеты</a></li>
+    <li><a href="/itopt">Настройки</a></li>
+</ul><!-- f-nav f-nav-tabs -->
+
+
+<h3>Обработка заявок</h3>
+
+
+<p>
+<a href="/ittasknew"><mark>Создать<mark></a>
+</p>
+
+
+
+<center>
+    <form action="" method="post" class="f-horizontal">{% csrf_token %}
+    <div class="f-row">
+	    {{ form.search.label }}
+	    {{ form.search }}
+	<button type="submit" class="f-bu">Искать</button>
+    </div><!-- f-row -->
+    </form>
+
+</center>
+
+
+{# Вывод страниц #}
+<div class="paginator">
+    <span class="step-links">
+	{% if data.has_previous %}
+	    <a href="?page={{ data.previous_page_number }}">Предыдущая</a>
+	{% endif %}
+
+    <span class="current">
+	Стр. {{ data.number }} из {{ data.paginator.num_pages }}
+    </span>
+
+	{% if data.has_next %}
+	    <a href="?page={{ data.next_page_number }}">Следующая</a>
+	{% endif %}
+    </span>
+</div><!-- paginator -->
+
+
+
+<table>
+    <caption></caption>
+    <thead>
+	<tr>
+	    <th>Номер</th>
+	    <th>Дата</th>
+	    <th>Время</th>
+	    <th>Трудоемкость<br>(чел./ч.)</th>
+	    <th>Тема</th>
+	    <th>Исполнитель</th>
+	    <th>Статус</th>
+	    <th>Категория</th>
+	    <th>Контакт</th>
+	    <th>Телефон<br>IP</th>
+	</tr>
+    </thead>
+    <tbody>
+	{% for row in data %}
+	<tr>
+	    <td><a href="/ittaskedit/?task_id={{ row.0 }}" style="color: {{ row.23 }};">{{ row.1 }}</a></td>
+	    <td><a href="/ittaskedit/?task_id={{ row.0 }}" style="color: {{ row.23 }};">{{ row.3 }}</a></td>
+	    <td><a href="/ittaskedit/?task_id={{ row.0 }}" style="color: {{ row.23 }};">{{ row.4 }}</a></td>
+	    <td><a href="/ittaskedit/?task_id={{ row.0 }}" style="color: {{ row.23 }};">{{ row.5 }}</a></td>
+	    <td><a href="/ittaskedit/?task_id={{ row.0 }}" style="color: {{ row.23 }};">{{ row.6 }}</a></td>
+	    <td><a href="/ittaskedit/?task_id={{ row.0 }}" style="color: {{ row.23 }};">{{ row.9 }} {{ row.8 }}</a></td>
+	    <td><a href="/ittaskedit/?task_id={{ row.0 }}" style="color: {{ row.23 }};">{{ row.14 }}</a></td>
+	    <td><a href="/ittaskedit/?task_id={{ row.0 }}" style="color: {{ row.23 }};">{{ row.16 }}</a></td>
+	    <td><a href="/ittaskedit/?task_id={{ row.0 }}" style="color: {{ row.23 }};">{{ row.18 }}</a></td>
+	    <td><a href="/ittaskedit/?task_id={{ row.0 }}" style="color: {{ row.23 }};">{{ row.19 }}<br>{{ row.21 }}</a></td>
+	</tr>
+	{% endfor%}
+    </tbody>
+</table>
+
+{# Вывод страниц #}
+<div class="paginator">
+    <span class="step-links">
+	{% if data.has_previous %}
+	    <a href="?page={{ data.previous_page_number }}">Предыдущая</a>
+	{% endif %}
+
+    <span class="current">
+	Стр. {{ data.number }} из {{ data.paginator.num_pages }}
+    </span>
+
+	{% if data.has_next %}
+	    <a href="?page={{ data.next_page_number }}">Следующая</a>
+	{% endif %}
+    </span>
+</div><!-- paginator -->
+
+
+
+</div><!-- g-row -->
+</div><!-- g -->

@@ -1,0 +1,64 @@
+{% include "header.html" %}
+
+
+{% include "store/oneh.html" %}
+
+
+
+<ul class="f-nav f-nav-tabs">
+	<li><a href="/storeone">Поступления</a></li>
+	<li><a href="/storerest">Остатки</a></li>
+	<li><a href="/storereserve">Резервы</a></li>
+	<li class="active"><a href="/storeoneout">Реализация</a></li>
+	<li><a href="#">Перемещения</a></li>
+	<li><a href="/storeprocess">Движение</a></li>
+</ul><!-- f-nav f-nav-tabs -->
+
+{% comment %}
+<p>
+<a href="#"><i class="fa fa-truck"></i>&nbsp;&nbsp;<mark>Новая реализация<mark></a>
+</p>
+{% endcomment %}
+
+<table>
+    <caption></caption>
+    <thead>
+	<tr>
+	    <th></th>
+	    <th>Дата</th>
+	    <th>Заявка ТМЦ</th>
+	    <th>Данные модели</th>
+	    <th>Склад</th>
+	    <th>Ед.из.</th>
+	    <th>Кол-во</th>
+	    <th>Пользователь</th>
+	</tr>
+    </thead>
+    <tbody>
+	{% for row in data %}
+	<tr>
+	    <td>
+		{% if row.14 %}
+		    <a href="/storeoneout/?cancel_one={{ row.0 }}"><i class="fa fa-trash-o">&nbsp;&nbsp;&nbsp;</i><mark>X</mark></a>
+		{% endif %}
+	    </td>
+	    <td>{{ row.1|date:"d.m.Y" }}</td>
+	    <td>{{ row.2 }}</td>
+	    <td><a href="/storeoneoutinfo/?row_id={{ row.0 }}" onclick="return hs.htmlExpand(this, { 
+		    objectType: 'ajax', width: 600, height: 400, 
+		    headingText: 'Реализация', wrapperClassName: 'titlebar' } )"><i class="fa fa-comment"></i>&nbsp;{{ row.4 }}</a>
+	    </td>
+	    <td>{{ row.5 }}</td>
+	    <td>{{ row.6 }}</td>
+	    <td>{{ row.8 }}</td>
+	    <td>{{ row.10 }} {{ row.9 }}</td>
+	</tr>
+	{% endfor%}
+    </tbody>
+</table>
+
+
+</div><!-- g-row -->
+</div><!-- g -->
+
+{% include "footer.html" %}

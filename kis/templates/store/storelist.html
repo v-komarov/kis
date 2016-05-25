@@ -1,0 +1,57 @@
+{% include "header.html" %}
+
+<div class="g">
+<div class="g-row">
+
+{% include "menu.html" %}
+
+
+<h3>Склад</h3>
+
+<ul class="f-nav f-nav-tabs">
+	<li><a href="/store">Номенклатура</a></li>
+	<li class="active"><a href="/storelist">Склады</a></li>
+	<li><a href="/storeperson">Кладовщики</a></li>
+	<li><a href="/storetmc">Заявки ТМЦ</a></li>
+	<li><a href="/storereports">Отчеты</a></li>
+</ul><!-- f-nav f-nav-tabs -->
+
+
+<h3>Список складов</h3>
+
+<p>
+<a href="/storelistnew"><i class="fa fa-file-o"></i>&nbsp;&nbsp;<mark>Добавить<mark></a>
+</p>
+
+
+<table>
+    <caption></caption>
+    <thead>
+	<tr>
+	    <th>Склад (название)</th>
+	    <th>Создан</th>
+	    <th>Создал</th>
+	    <th>Изменен</th>
+	    <th>Изменил</th>
+	</tr>
+    </thead>
+    <tbody>
+	{% for row in data %}
+	<tr>
+	    <td><a href="/storelistedit/?store_id={{ row.0 }}"><mark>{{ row.1 }}</mark></a></td>
+	    <td><a href="/storelistedit/?store_id={{ row.0 }}"><mark>{{ row.2 }}</mark></a></td>
+	    <td><a href="/storelistedit/?store_id={{ row.0 }}"><mark>{{ row.4 }} {{ row.3 }} ({{ row.6 }})</mark></a></td>
+	    <td><a href="/storelistedit/?store_id={{ row.0 }}"><mark>{{ row.7 }}</mark></td>
+	    <td><a href="/storelistedit/?store_id={{ row.0 }}"><mark>{{ row.9 }} {{ row.8 }} ({{ row.11 }})</mark></a></td>
+	</tr>
+	{% endfor%}
+    </tbody>
+</table>
+
+
+
+
+</div><!-- g-row -->
+</div><!-- g -->
+
+{% include "footer.html" %}

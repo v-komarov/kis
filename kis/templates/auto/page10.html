@@ -1,0 +1,57 @@
+{% include "header.html" %}
+
+<div class="g">
+<div class="g-row">
+
+{% include "menu.html" %}
+
+
+<h3>Автотранспорт</h3>
+
+<ul class="f-nav f-nav-tabs">
+    <li><a href="/page2auto">Новый заказ</a></li>
+    <li><a href="/auto">Заказы</a></li>
+    <li><a href="/page3auto">Выезды по заказам</a></li>
+    <li><a href="/page4auto">Плановые выезды</a></li>
+    <li><a href="/page5auto">Автомобили</a></li>
+    <li><a href="/page6auto">Водители</a></li>
+    <li><a href="/page9auto">Личные автомобили</a></li>
+    <li><a href="/page7auto">Настройки</a></li>
+    <li><a href="/page8auto">Отчеты</a></li>
+    <li class="active"><a href="/page10auto">Инструкции</a></li>
+</ul><!-- f-nav f-nav-tabs -->
+
+
+<h3>Список инструкций</h3>
+
+<p>
+<a href="/page10autoadd"><mark>Добавить<mark></a>
+</p>
+
+<table border=0>
+<tr>
+<th>Наименование</th>
+<th>Файл</th>
+<th>Добавил (телефон)</th>
+<th>Дата</th>
+<th>Удалить</th>
+</tr>
+
+
+    {% for row in data %}
+	<tr>
+	    <td>{{ row.1 }}</td>
+	    <td><a href="/page10auto/?doc_id={{ row.0 }}">{{ row.3 }}</a></td>
+	    <td>{{ row.6 }} {{ row.5 }} ({{ row.8 }})</td>
+	    <td>{{ row.4 }}</td>
+	    <td><a href="/page10auto/?delete_id={{ row.0 }}"><mark>X</mark></a></td>
+	</tr>
+    {% endfor %}
+
+</table>
+
+
+</div><!-- g-row -->
+</div><!-- g -->
+
+{% include "footer.html" %}

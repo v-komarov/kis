@@ -1,0 +1,116 @@
+{% include "header.html" %}
+
+<div class="g">
+<div class="g-row">
+
+{% include "menu.html" %}
+
+
+<h3>Автотранспорт</h3>
+
+<ul class="f-nav f-nav-tabs">
+    <li><a href="/page2auto">Новый заказ</a></li>
+    <li><a href="/auto">Заказы</a></li>
+    <li class="active"><a href="/page3auto">Выезды по заказам</a></li>
+    <li><a href="/page4auto">Плановые выезды</a></li>
+    <li><a href="/page5auto">Автомобили</a></li>
+    <li><a href="/page6auto">Водители</a></li>
+    <li><a href="/page9auto">Личные автомобили</a></li>
+    <li><a href="/page7auto">Настройки</a></li>
+    <li><a href="/page8auto">Отчеты</a></li>
+    <li><a href="/page10auto">Инструкции</a></li>
+</ul><!-- f-nav f-nav-tabs -->
+
+
+
+
+<h3>Список выездов по заказам</h3>
+
+
+<center>
+    <form action="" method="post" class="f-horizontal">{% csrf_token %}
+    <div class="f-row">
+		{{ form.search.label }}
+		{{ form.search }}
+		<button type="submit" class="f-bu">Искать</button>
+    </div><!-- f-row -->
+    </form>
+</center>
+
+
+
+{# Вывод страниц #}
+<div class="paginator">
+    <span class="step-links">
+	{% if data.has_previous %}
+	    <a href="?page={{ data.previous_page_number }}">Предыдущая</a>
+	{% endif %}
+
+    <span class="current">
+	Стр. {{ data.number }} из {{ data.paginator.num_pages }}
+    </span>
+
+	{% if data.has_next %}
+	    <a href="?page={{ data.next_page_number }}">Следующая</a>
+	{% endif %}
+    </span>
+</div><!-- paginator -->
+
+
+<table border=0>
+<tr>
+<th>Заявка<br>дата,время</th>
+<th>Дата</th>
+<th>Время<br>с...по</th>
+<th>Прод-сть (часы)</th>
+<th>Маршрут</th>
+<th>Объект</th>
+<th>Автомобиль</th>
+<th>Водитель</th>
+<th>Создал</th>
+<th>Статус</th>
+<th>ЦФО</th>
+</tr>
+
+
+    {% for row in data %}
+	<tr>
+	    <td><a href="/page3autoedit/?rec_id={{ row.0 }}" style="color: {{ row.34 }};">{{ row.0 }}<br>{{ row.27|date:"d.m.Y H:i" }}</a></td>
+	    <td><a href="/page3autoedit/?rec_id={{ row.0 }}" style="color: {{ row.34 }};">{{ row.3 }}{% if row.3 != row.38 %}<br>{{ row.38 }}{% endif %}</a></td>
+	    <td><a href="/page3autoedit/?rec_id={{ row.0 }}" style="color: {{ row.34 }};">{{ row.4 }}<br>{{ row.39 }}</a></td>
+	    <td><a href="/page3autoedit/?rec_id={{ row.0 }}" style="color: {{ row.34 }};">{{ row.5 }}</a></td>
+	    <td><a href="/page3autoedit/?rec_id={{ row.0 }}" style="color: {{ row.34 }};">{{ row.7 }}</a></td>
+	    <td><a href="/page3autoedit/?rec_id={{ row.0 }}" style="color: {{ row.34 }};">{{ row.8 }}</a></td>
+	    <td><a href="/page3autoedit/?rec_id={{ row.0 }}" style="color: {{ row.34 }};">{{ row.13 }} {{ row.14 }} {{ row.12 }}</a></td>
+	    <td><a href="/page3autoedit/?rec_id={{ row.0 }}" style="color: {{ row.34 }};">{{ row.11 }}</a></td>
+	    <td><a href="/page3autoedit/?rec_id={{ row.0 }}" style="color: {{ row.34 }};">{{ row.23 }} {{ row.22 }} ({{ row.25 }})</a></td>
+	    <td><a href="/page3autoedit/?rec_id={{ row.0 }}" style="color: {{ row.34 }};">{{ row.16 }}</a></td>
+	    <td><a href="/page3autoedit/?rec_id={{ row.0 }}" style="color: {{ row.34 }};">{{ row.30 }} {{ row.29 }}</a></td>
+	</tr>
+    {% endfor %}
+
+</table>
+
+{# Вывод страниц #}
+<div class="paginator">
+    <span class="step-links">
+	{% if data.has_previous %}
+	    <a href="?page={{ data.previous_page_number }}">Предыдущая</a>
+	{% endif %}
+
+    <span class="current">
+	Стр. {{ data.number }} из {{ data.paginator.num_pages }}
+    </span>
+
+	{% if data.has_next %}
+	    <a href="?page={{ data.next_page_number }}">Следующая</a>
+	{% endif %}
+    </span>
+</div><!-- paginator -->
+
+
+
+</div><!-- g-row -->
+</div><!-- g -->
+
+{% include "footer.html" %}

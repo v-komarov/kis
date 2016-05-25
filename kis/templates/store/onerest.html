@@ -1,0 +1,57 @@
+{% include "header.html" %}
+
+
+{% include "store/oneh.html" %}
+
+
+
+<ul class="f-nav f-nav-tabs">
+	<li><a href="/storeone">Поступления</a></li>
+	<li class="active"><a href="/storerest">Остатки</a></li>
+	<li><a href="/storereserve">Резервы</a></li>
+	<li><a href="/storeoneout">Реализация</a></li>
+	<li><a href="#">Перемещения</a></li>
+	<li><a href="/storeprocess">Движение</a></li>
+</ul><!-- f-nav f-nav-tabs -->
+
+<p>
+<a href="/storeonein/?one_id={{ one.0 }}&type_one=1"><i class="fa fa-truck"></i>&nbsp;&nbsp;<mark>Ввод остатка<mark></a>
+</p>
+
+
+<table>
+    <caption></caption>
+    <thead>
+	<tr>
+	    <th></th>
+	    <th>Дата</th>
+	    <th>Данные модели</th>
+	    <th>Склад</th>
+	    <th>Ед.из.</th>
+	    <th>Кол-во</th>
+	    <th>Пользователь</th>
+	</tr>
+    </thead>
+    <tbody>
+	{% for row in onein %}
+	<tr>
+	    <td></td>
+	    <td>{{ row.4|date:"d.m.Y" }}</td>
+	    <td><a href="/storeoneininfo/?row_id={{ row.0 }}" onclick="return hs.htmlExpand(this, { 
+		    objectType: 'ajax', width: 600, height: 400, 
+		    headingText: 'Ввод остатка', wrapperClassName: 'titlebar' } )"><i class="fa fa-comment"></i>&nbsp;{{ row.15 }}</a>
+	    </td>
+	    <td>{{ row.9 }}</td>
+	    <td>{{ row.5 }}</td>
+	    <td>{{ row.10 }}</td>
+	    <td>{{ row.12 }} {{ row.11 }}</td>
+	</tr>
+	{% endfor%}
+    </tbody>
+</table>
+
+
+</div><!-- g-row -->
+</div><!-- g -->
+
+{% include "footer.html" %}

@@ -1,0 +1,54 @@
+{% include "header.html" %}
+
+
+<div class="g">
+<div class="g-row">
+
+{% include "menu.html" %}
+
+
+<h3>Склад</h3>
+
+<ul class="f-nav f-nav-tabs">
+	<li><a href="/store">Номенклатура</a></li>
+	<li><a href="/storelist">Склады</a></li>
+	<li><a href="/storeperson">Кладовщики</a></li>
+	<li class="active"><a href="/storetmc">Заявки ТМЦ</a></li>
+	<li><a href="/storereports">Отчеты</a></li>
+</ul><!-- f-nav f-nav-tabs -->
+
+
+<h3>Заявки ТМЦ</h3>
+<b>Наименование : </b>{{ spec_data.1 }}<br>
+<b>Ед.из. : </b>{{ spec_data.3 }}<br>
+<b>Потребность : </b>{{ spec_data.4 }}<br>
+<b>Выдано : </b>{{ spec_data.14 }}<br>
+<b>В резерве : </b>{{ spec_data.15 }}<br>
+
+
+    <form action="." method="post" class="f-horizontal">{% csrf_token %}
+    <div class="f-row">
+	<fieldset>
+	    <legend>
+		Выбор из наличия на складе
+	    </legend>
+	    <div class="f-row">
+		<label>{{ form.one.label }}</label>
+		<div class="f-input">{{ form.one }}</div>
+	    </div><!-- f-row -->
+	    <div class="f-row">
+		<label>{{ form.q.label }}</label>
+		<div class="f-input">{{ form.q }}</div>
+	    </div><!-- f-row -->
+	</fieldset>
+	<div class="f-actions"><button type="submit" class="f-bu">Применить</button></div>
+    </div><!-- f-row -->
+    </form>
+
+
+</div><!-- g-row -->
+</div><!-- g -->
+
+
+{% include "footer.html" %}
+

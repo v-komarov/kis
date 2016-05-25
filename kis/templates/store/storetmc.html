@@ -1,0 +1,111 @@
+{% include "header.html" %}
+
+
+
+<div class="g">
+<div class="g-row">
+
+{% include "menu.html" %}
+
+
+<h3>Склад</h3>
+
+<ul class="f-nav f-nav-tabs">
+	<li><a href="/store">Номенклатура</a></li>
+	<li><a href="/storelist">Склады</a></li>
+	<li><a href="/storeperson">Кладовщики</a></li>
+	<li class="active"><a href="/storetmc">Заявки ТМЦ</a></li>
+	<li><a href="/storereports">Отчеты</a></li>
+</ul><!-- f-nav f-nav-tabs -->
+
+
+<h3>Заявки ТМЦ</h3>
+
+
+<center>
+    <form action="" method="post" class="f-horizontal">{% csrf_token %}
+    <div class="f-row">
+	    {{ form.search.label }}
+	    {{ form.search }}
+	<button type="submit" class="f-bu">Искать</button>
+    </div><!-- f-row -->
+    </form>
+
+</center>
+
+
+
+
+{# Вывод страниц #}
+<div class="paginator">
+    <span class="step-links">
+	{% if data.has_previous %}
+	    <a href="?page={{ data.previous_page_number }}">Предыдущая</a>
+	{% endif %}
+
+    <span class="current">
+	Стр. {{ data.number }} из {{ data.paginator.num_pages }}
+    </span>
+
+	{% if data.has_next %}
+	    <a href="?page={{ data.next_page_number }}">Следующая</a>
+	{% endif %}
+    </span>
+</div><!-- paginator -->
+
+
+
+<table>
+    <caption></caption>
+    <thead>
+	<tr>
+	    <th>Наименование</th>
+	    <th>Ед.из.</th>
+	    <th>Потребность</th>
+	    <th>Получено/<br>В резерве</th>
+	    <th>Заявка ТМЦ</th>
+	    <th>Инициатор</th>
+	</tr>
+    </thead>
+    <tbody>
+	{% for row in data %}
+	<tr>
+	    <td><a href="/storetmcchoice/?spec={{ row.0 }}">{{ row.1 }}</a></td>
+	    <td>{{ row.3 }}</td>
+	    <td><b>{{ row.4 }}</b></td>
+	    <td>
+		{% if row.14 %}<b>{{ row.14 }}</b>{% endif %} / {% if row.15 %}<b>{{ row.15 }}</b>{% endif %}
+	    </td>
+	    <td><b>{{ row.5 }}</b> {{ row.6|date:"d.m.Y" }}<br>{{ row.7 }}</td>
+	    <td><b>{{ row.9 }} {{ row.8 }}</b> ({{ row.11 }})</td>
+	</tr>
+	<tr id="{{ row.0 }}">
+	</tr>
+
+	{% endfor%}
+    </tbody>
+</table>
+
+{# Вывод страниц #}
+<div class="paginator">
+    <span class="step-links">
+	{% if data.has_previous %}
+	    <a href="?page={{ data.previous_page_number }}">Предыдущая</a>
+	{% endif %}
+
+    <span class="current">
+	Стр. {{ data.number }} из {{ data.paginator.num_pages }}
+    </span>
+
+	{% if data.has_next %}
+	    <a href="?page={{ data.next_page_number }}">Следующая</a>
+	{% endif %}
+    </span>
+</div><!-- paginator -->
+
+
+
+</div><!-- g-row -->
+</div><!-- g -->
+
+{% include "footer.html" %}

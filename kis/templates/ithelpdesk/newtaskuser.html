@@ -1,0 +1,39 @@
+{% include "header.html" %}
+
+<div class="g">
+<div class="g-row">
+
+{% include "menu.html" %}
+
+
+<h3>ItHelpDesk</h3>
+
+<ul class="f-nav f-nav-tabs">
+    <li class="active"><a href="/itmy">Мои заявки</a></li>
+    <li><a href="/ittask">Обработка заявок</a></li>
+    <li><a href="/itreport">Отчеты</a></li>
+    <li><a href="/itopt">Настройки</a></li>
+</ul><!-- f-nav f-nav-tabs -->
+
+
+<h3>Новая заявка</h3>
+
+
+<center>
+    <form action="" enctype="multipart/form-data" method="post" class="forms">{% csrf_token %}
+	<fieldset>
+	    <legend>
+	    </legend>
+	    <div class="f-row">
+		<label>{{ form.task.label }}</label>
+		<div class="f-input">{{ form.task }}</div>
+	    </div><!-- f-row -->
+	</fieldset>
+	<div class="f-actions"><button type="submit" class="f-bu">Создать</button></div>
+    </form>
+
+</center>
+
+
+</div><!-- g-row -->
+</div><!-- g -->

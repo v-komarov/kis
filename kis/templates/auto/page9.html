@@ -1,0 +1,61 @@
+{% include "header.html" %}
+
+<div class="g">
+<div class="g-row">
+
+{% include "menu.html" %}
+
+
+<h3>Автотранспорт</h3>
+
+<ul class="f-nav f-nav-tabs">
+    <li><a href="/page2auto">Новый заказ</a></li>
+    <li><a href="/auto">Заказы</a></li>
+    <li><a href="/page3auto">Выезды по заказам</a></li>
+    <li><a href="/page4auto">Плановые выезды</a></li>
+    <li><a href="/page5auto">Автомобили</a></li>
+    <li><a href="/page6auto">Водители</a></li>
+    <li class="active"><a href="/page9auto">Личные автомобили</a></li>
+    <li><a href="/page7auto">Настройки</a></li>
+    <li><a href="/page8auto">Отчеты</a></li>
+    <li><a href="/page10auto">Инструкции</a></li>
+</ul><!-- f-nav f-nav-tabs -->
+
+
+
+
+<h3>Личные автомобили</h3>
+
+<p>
+<a href="/page9autoadd"><mark>Добавить<mark></a>
+</p>
+
+<table border=0>
+<tr>
+<th>Город/ЭТЦ</th>
+<th>Марка</th>
+<th>Тип</th>
+<th>Г.номер</th>
+<th>Добавил</th>
+<th>Дата</th>
+</tr>
+
+
+    {% for row in data %}
+	<tr>
+	    <td><a href="/page9autoedit/?rec_id={{ row.0 }}">{{ row.1 }}</a></td>
+	    <td><a href="/page9autoedit/?rec_id={{ row.0 }}">{{ row.2 }}</a></td>
+	    <td><a href="/page9autoedit/?rec_id={{ row.0 }}">{{ row.4 }}</a></td>
+	    <td><a href="/page9autoedit/?rec_id={{ row.0 }}">{{ row.3 }}</a></td>
+	    <td><a href="/page9autoedit/?rec_id={{ row.0 }}">{{ row.9 }} {{ row.8 }} ({{ row.12 }})</a></td>
+	    <td><a href="/page9autoedit/?rec_id={{ row.0 }}">{{ row.13 }}</a></td>
+	</tr>
+    {% endfor %}
+
+</table>
+
+
+</div><!-- g-row -->
+</div><!-- g -->
+
+{% include "footer.html" %}

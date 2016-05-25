@@ -1,0 +1,33 @@
+{% include "header.html" %}
+
+<div class="g">
+<div class="g-row">
+<div class="g-8">
+
+
+<b>Дата: </b>{{ row_data.4|date:"d.m.Y" }}<br>
+<b>Склад: </b>{{ row_data.9 }}<br>
+<b>Ед.из. </b>{{ row_data.5 }}<br>
+<b>Кол-во: </b>{{ row_data.10 }}<br>
+<b>Пользователь: </b>{{ row_data.12 }} {{ row_data.11 }}<br>
+<b>Модель данных: </b>{{ row_data.15 }}<br>
+
+<table>
+    <tr>
+	<td>ШтрихКод</td>
+	<td>{{ row_data.8 }}</td>	
+    </tr>
+    {% for item in data %}
+	<tr>
+	    <td>{{ item.0 }}</td>
+	    <td>{{ item.1 }}</td>
+	</tr>
+    {% endfor %}
+</table>
+
+
+</div><!-- g-8 -->
+</div><!-- g-row -->
+</div><!-- g -->
+
+{% include "footer.html" %}

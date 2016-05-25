@@ -1,0 +1,52 @@
+{% include "header.html" %}
+
+
+{% include "store/oneh.html" %}
+
+
+
+<ul class="f-nav f-nav-tabs">
+	<li><a href="/storeone">Поступления</a></li>
+	<li><a href="/storerest">Остатки</a></li>
+	<li><a href="/storereserve">Резервы</a></li>
+	<li><a href="/storeoneout">Реализация</a></li>
+	<li><a href="#">Перемещения</a></li>
+	<li class="active"><a href="/storeprocess">Движение</a></li>
+</ul><!-- f-nav f-nav-tabs -->
+
+
+<table>
+    <caption></caption>
+    <thead>
+	<tr>
+	    <th>Дата</th>
+	    <th>Склад</th>
+	    <th>Ед.из.</th>
+	    <th>Было</th>
+	    <th>Кол-во</th>
+	    <th>Стало</th>
+	    <th>Операция</th>
+	    <th>Пользователь</th>
+	</tr>
+    </thead>
+    <tbody>
+	{% for row in oneprocess %}
+	<tr>
+	    <td>{{ row.1|date:"d.m.Y" }}</td>
+	    <td>{{ row.2 }}</td>
+	    <td>{{ row.3 }}</td>
+	    <td>{{ row.4}}</td>
+	    <td>{{ row.5 }}</td>
+	    <td>{{ row.6 }}</td>
+	    <td>{{ row.7 }}</td>
+	    <td>{{ row.9 }} {{ row.8 }}</td>
+	</tr>
+	{% endfor%}
+    </tbody>
+</table>
+
+
+</div><!-- g-row -->
+</div><!-- g -->
+
+{% include "footer.html" %}
